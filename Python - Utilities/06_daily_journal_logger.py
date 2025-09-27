@@ -20,6 +20,7 @@ Today I learned about how list comprehensions work in Python!
 Productivity Rating: 4/5
 """
 import datetime
+import os
 
 learning = input("What did you learn Today? ").strip()
 rating = input("⭐️ rate your productivity today (1-5, optional): ").strip()
@@ -31,8 +32,10 @@ journal_entry = f"\n 🗓️{current_date} , {current_time}\n {learning}"
 if rating:
     journal_entry += f"\n Productivity Rating: {rating}/5 \n"
 
-filename = "learning_journal.txt"
-with open(filename,"a",encoding="utf-8") as f:
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+TASK_FILE = os.path.join(BASE_DIR, "learning_journal.txt")
+
+with open(TASK_FILE,"a",encoding="utf-8") as f:
     f.write(journal_entry)
 
-print(f"\n your journal entry has been saved to {filename} file. ")
+print(f"\n your journal entry has been saved to {TASK_FILE} file. ")

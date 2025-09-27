@@ -1,2 +1,2 @@
-Commit the Terminal Based Task Manager to Github repo||done
-Do more Mini-Projects||not_done
+Learning Python||done
+Making Python Projects||not_done
