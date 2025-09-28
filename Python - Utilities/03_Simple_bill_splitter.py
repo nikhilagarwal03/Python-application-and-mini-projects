@@ -25,6 +25,14 @@ Bonus:
 - Round to 2 decimal places
 - Print a decorative summary box
 """
+import pyttsx3
+
+def announce(message):
+    engine = pyttsx3.init()
+    print(message)
+    engine.say(message)
+    engine.runAndWait()
+
 def get_float(prompt):
     while True:
         try:
@@ -44,8 +52,8 @@ total_bill = get_float("Enter the Total bill Amount: ")
 share = round(total_bill/num_people,2)
 
 print("\n" + "*" *100)
-print(f"Total Bill is: {total_bill}")
-print(f"Each person owes {share}")
+announce(f"Total Bill is: {total_bill}")
+announce(f"Each person owes {share}")
 for name in names:
-    print(f"{name} owes ₹{share}")
+    announce(f"{name} owes ₹{share}")
 print("\n" + "*" *100)

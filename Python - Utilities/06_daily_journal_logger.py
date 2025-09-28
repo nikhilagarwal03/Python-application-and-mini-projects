@@ -21,6 +21,13 @@ Productivity Rating: 4/5
 """
 import datetime
 import os
+import pyttsx3
+
+def announce(message):
+    engine = pyttsx3.init()
+    print(message)
+    engine.say(message)
+    engine.runAndWait()
 
 learning = input("What did you learn Today? ").strip()
 rating = input("⭐️ rate your productivity today (1-5, optional): ").strip()
@@ -31,11 +38,11 @@ current_time = datetime.datetime.now().strftime("%H:%M:%S")
 journal_entry = f"\n 🗓️{current_date} , {current_time}\n {learning}"
 if rating:
     journal_entry += f"\n Productivity Rating: {rating}/5 \n"
-
+FILE_NAME = "learning_journal.txt"
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-TASK_FILE = os.path.join(BASE_DIR, "learning_journal.txt")
+TASK_FILE = os.path.join(BASE_DIR, FILE_NAME)
 
 with open(TASK_FILE,"a",encoding="utf-8") as f:
     f.write(journal_entry)
 
-print(f"\n your journal entry has been saved to {TASK_FILE} file. ")
+announce(f"\n your journal entry has been saved to {FILE_NAME} file. ")

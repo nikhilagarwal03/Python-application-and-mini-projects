@@ -27,6 +27,13 @@ Bonus:
 """
 
 import datetime
+import pyttsx3
+
+def announce(message):
+  engine = pyttsx3.init()
+  # print(message)
+  engine.say(message)
+  engine.runAndWait()
 
 name = input("What is your name? ").strip()
 age = int(input("What is Your Age? ").strip())
@@ -35,15 +42,16 @@ profession = input("What is your profession? ").strip()
 hobby = input("What is your Hobby? ").strip()
 
 intro_message = (
-    f"Hello! My name is {name}. I'm {age} years old and live in {city}. "
-    f"I work as {profession} and I absolutely enjoy {hobby} in my free time. "
-    f"Nice to meet you!\n"
+  f"Hello! My name is {name}. I'm {age} years old and live in {city}. "
+  f"I work as {profession} and I absolutely enjoy {hobby} in my free time. "
+  f"Nice to meet you!\n"
 )
 
 current_date = datetime.datetime.now().strftime("%d-%m-%Y")
 current_time = datetime.datetime.now().strftime("%H:%M:%S")
-intro_message += f"\n Generated on: {current_date} and Time: {current_time} "
+updated_intro_message = f"{intro_message} \n Generated on: {current_date} and Time: {current_time} "
 
 border = ("\n" + "*" *100)
-final_output = f"\n{border}\n{intro_message}\n{border}"
+final_output = f"\n{border}\n{updated_intro_message}\n{border}"
 print(final_output)
+announce(intro_message)

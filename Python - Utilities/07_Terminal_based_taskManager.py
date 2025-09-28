@@ -34,9 +34,10 @@ Bonus:
 """
 
 import os
+
+FILE_NAME = "tasks.txt"
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-TASK_FILE = os.path.join(BASE_DIR, "tasks.txt")
-# TASK_FILE = "tasks.txt"
+TASK_FILE = os.path.join(BASE_DIR, FILE_NAME)
 
 def load_tasks():
    tasks = []

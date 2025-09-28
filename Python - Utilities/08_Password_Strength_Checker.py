@@ -21,6 +21,13 @@ Bonus:
 import string
 import random
 import getpass
+import pyttsx3
+
+def announce(message):
+    engine = pyttsx3.init()
+    print(message)
+    engine.say(message)
+    engine.runAndWait()
 
 def check_password_strength(password):
     issues = []
@@ -45,12 +52,12 @@ password = getpass.getpass("Enter a Password: ")
 issues = check_password_strength(password)
 
 if not issues:
-    print("That's a Strong Password.")
+    announce("That's a Strong Password.")
 else:
-    print("That's a weak Password.")
+    announce("That's a weak Password.")
     for issue in issues:
-        print(f"- {issue}")
+        announce(f"- {issue}")
 
 suggestion = generate_Strong_password()
-print("\n suggesting you a strong password")
+announce("\n suggesting you a strong password")
 print(suggestion)

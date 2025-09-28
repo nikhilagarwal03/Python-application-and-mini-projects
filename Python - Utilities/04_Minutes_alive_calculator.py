@@ -30,32 +30,40 @@ Bonus:
 - Add comma formatting for large numbers
 - Let the user try again without restarting the program
 """
+import pyttsx3
+
+def announce(message):
+  engine = pyttsx3.init()
+  print(message)
+  engine.say(message)
+  engine.runAndWait()
+
 def function(age_years):
-    DAYS_IN_YEAR = 365.25
-    HOURS_IN_DAY = 24
-    MINUTES_IN_HOUR = 60
+  DAYS_IN_YEAR = 365.25
+  HOURS_IN_DAY = 24
+  MINUTES_IN_HOUR = 60
 
-    total_days = age_years * DAYS_IN_YEAR
-    total_hours = total_days * HOURS_IN_DAY
-    total_minutes = total_hours * MINUTES_IN_HOUR
+  total_days = age_years * DAYS_IN_YEAR
+  total_hours = total_days * HOURS_IN_DAY
+  total_minutes = total_hours * MINUTES_IN_HOUR
 
-    return round(total_days), round(total_hours), round(total_minutes)
+  return round(total_days), round(total_hours), round(total_minutes)
 
 while True:
-    try:
-        age = float(input("Enter Your Age(in Years): "))
-        days, hours, minutes = function(age)
+  try:
+      age = float(input("Enter Your Age(in Years): "))
+      days, hours, minutes = function(age)
 
-        print(f"""\n You are approximately: 
-              - {days} days old
-              - {hours} hours old
-              - {minutes} minutes old\n
-        """)
+      announce(f"""\n You are approximately: 
+            - {days} days old
+            - {hours} hours old
+            - {minutes} minutes old\n
+      """)
         
-        again = input("would you like to try again? (y/n): ")
+      again = input("would you like to try again? (y/n): ")
 
-        if again != "y":
-            print("thanks for using the python script")
-            break
-    except:
-        print("please enter valid age (in years)")
+      if again != "y":
+        announce("thanks for using the python script")
+        break
+  except:
+    announce("please enter valid age (in years)")
