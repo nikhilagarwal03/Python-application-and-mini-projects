@@ -19,6 +19,7 @@ import pyttsx3
 
 def announce(message):
     engine = pyttsx3.init()
+    print(message)
     engine.say(message)
     engine.runAndWait()
 
@@ -32,7 +33,7 @@ while True:
     except ValueError:
         print("Invalid Input Type, enter only whole numbers")
 
-print("Starting Timer...")
+announce("Starting Timer...")
 for remaining in range(seconds,0,-1):
     mins, secs = divmod(remaining,60)
     time_format = f"{mins:02}:{secs:02}"
